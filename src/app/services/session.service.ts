@@ -37,7 +37,8 @@ export class SessionService implements CanActivate {
             return true;
           }
           return false;
-        });
+        })
+        .catch(this.handleError);
     }
     else {
       this.logout();
