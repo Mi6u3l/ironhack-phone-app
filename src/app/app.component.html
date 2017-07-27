@@ -1,2 +1,12 @@
 <h1>Welcome to {{title}}!</h1>
+
+<p *ngIf="this.session.isAuthenticated">
+  You're signed in as: {{ this.session.user.username }} | 
+  <a href="#" (click)="logout()">Logout</a>
+</p>
+
+<p *ngIf="!this.session.isAuthenticated">
+  <a [routerLink]="['/login']">Login</a>
+</p>
+
 <router-outlet></router-outlet>
