@@ -2,7 +2,7 @@
 
 <p *ngIf="this.session.isAuthenticated">
   You're signed in as: {{ this.session.user.username }} | 
-  <a href="#" (click)="logout()">Logout</a>
+  <a class='logout' (click)="logout()">Logout</a>
 </p>
 
 <p *ngIf="!this.session.isAuthenticated">
