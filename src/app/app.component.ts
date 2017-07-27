@@ -12,4 +12,8 @@ export class AppComponent {
   constructor(
     private session: SessionService
   ) { }
+
+  logout() {
+    this.session.logout();
+  }
 }

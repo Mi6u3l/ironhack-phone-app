@@ -3,16 +3,20 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class SessionService {
   BASE_URL: string = 'http://localhost:3000';
 
   public user = {};
-  public token = {};
+  public token = '';
   public isAuthenticated = false;
 
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    private router: Router
+  ) { }
 
   handleError(e) {
     return Observable.throw(e.json().message);
@@ -37,5 +41,13 @@ export class SessionService {
         return this.isAuthenticated;
 
       }).catch(this.handleError);
+  }
+
+  logout() {
+    this.token = '';
+    this.user = {}
+    this.isAuthenticated = false;
+
+    this.router.navigate(['']);
   }
 }
